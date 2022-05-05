@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SchedulePage: React.FC = () => {
+const SchedulePage = () => {
   return (
     <div>SchedulePage</div>
   )

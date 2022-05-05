@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoListPage: React.FC = () => {
+const TodoListPage = () => {
   return (
     <div>TodoListPage</div>
   )
