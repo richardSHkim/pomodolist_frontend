@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import '../styles/Timer.css'
 
-const Timer = () => {
-  const [time, setTime] = useState<number>(10)
+interface Props {
+  time: number,
+  setTime: React.Dispatch<React.SetStateAction<number>>
+}
+
+const Timer = ({ time, setTime }: Props) => {
 
   useEffect(() => {
     // count down
@@ -17,7 +20,9 @@ const Timer = () => {
   }, [time])
 
   return (
-    <div className='timer'>{time}</div>
+    <>
+      {time}
+    </>
   )
 }
 
