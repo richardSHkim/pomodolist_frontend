@@ -10,9 +10,9 @@ const SetTimer = ({ time, setTime }: Props) => {
 
   return (
     <div>
-      <input type={'number'} value={userTime} onChange={(e) => setUserTime(parseInt(e.target.value))}></input>
+      <input type={'number'} step={5} min={0} value={userTime} onChange={(e) => setUserTime(parseInt(e.target.value))}></input>
       <button onClick={() => {
-        setTime(userTime)
+        setTime(userTime*60)
         setUserTime(0)
         }}>Set</button>
     </div>

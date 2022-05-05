@@ -21,7 +21,7 @@ const Timer = ({ time, setTime }: Props) => {
 
   return (
     <>
-      {time}
+      {Math.floor(time/60)}분 {time%60}초
     </>
   )
 }
