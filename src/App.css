@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.schedule-page {
+  flex: 1;
+  background-color: lightcoral;
+}
+
+.pomodoro-page {
+  flex: 3;
+  background-color: lightblue;
+}
+
+.todolist-page {
+  flex: 2;
+  background-color: lightgoldenrodyellow;
+}
