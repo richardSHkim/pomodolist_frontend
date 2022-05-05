@@ -5,7 +5,7 @@ interface Props {
   setTime: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Timer = ({ time, setTime }: Props) => {
+const TimerView = ({ time, setTime }: Props) => {
 
   useEffect(() => {
     // count down
@@ -26,4 +26,4 @@ const Timer = ({ time, setTime }: Props) => {
   )
 }
 
-export default Timer
+export default TimerView

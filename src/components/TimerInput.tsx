@@ -5,7 +5,7 @@ interface Props {
   setTime: React.Dispatch<React.SetStateAction<number>>
 }
 
-const SetTimer = ({ time, setTime }: Props) => {
+const TimerInput = ({ time, setTime }: Props) => {
   const [userTime, setUserTime] = useState<number>(0)
 
   return (
@@ -19,4 +19,4 @@ const SetTimer = ({ time, setTime }: Props) => {
   )
 }
 
-export default SetTimer
+export default TimerInput
