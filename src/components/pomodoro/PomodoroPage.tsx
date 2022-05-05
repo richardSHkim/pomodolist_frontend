@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../styles/PomodoroPage.css'
+import '../../styles/PomodoroPage.css'
 import TimerInput from './TimerInput'
 import TimerView from './TimerView'
 

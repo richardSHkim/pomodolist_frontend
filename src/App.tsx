@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import { PomodoroPage } from './components/PomodoroPage';
-import SchedulePage from './components/SchedulePage';
-import TodoListPage from './components/TodoListPage';
+import { PomodoroPage } from './components/pomodoro/PomodoroPage';
+import SchedulePage from './components/schedule/SchedulePage';
+import TodoListPage from './components/todolist/TodoListPage';
 
 function App() {
   return (
