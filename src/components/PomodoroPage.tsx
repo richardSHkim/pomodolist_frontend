@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const PomodoroPage = () => {
+export const PomodoroPage: React.FC = () => {
   return (
     <div>PomodoroPage</div>
   )
