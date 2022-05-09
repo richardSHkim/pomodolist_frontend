@@ -15,7 +15,17 @@ export const scheduleSlice = createSlice({
   name: 'schedule',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
-  reducers: {}
+  reducers: {
+    clearSchedule: (state) => {
+      state.schedule = []
+    },
+    addSchedule: (state, action: PayloadAction<number>) => {
+      state.schedule.push(action.payload)
+    },
+    deleteSchedule: (state, action: PayloadAction<number>) => {
+      state.schedule.splice(action.payload, 1)
+    }
+  }
 })
 
 // export const {  } = scheduleSlice.actions
