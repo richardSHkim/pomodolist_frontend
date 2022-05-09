@@ -21,6 +21,6 @@ export const scheduleSlice = createSlice({
 // export const {  } = scheduleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectSchedule = (state: RootState) => state.schedule.schedule
+// export const selectSchedule = (state: RootState) => state.schedule.schedule
 
 export default scheduleSlice.reducer
