@@ -42,7 +42,7 @@ const TimerView = () => {
 
   return (
     <>
-      {Math.floor(time/60)}분 {time%60}초
+      {Math.floor(time/60)}min {time%60}sec
     </>
   )
 }

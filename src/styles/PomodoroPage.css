@@ -1,3 +1,11 @@
+.circle-view {
+  background-color: lightslategray;
+  height: 66.6vh;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
 .timer-view {
   background-color: lightgreen;
 }
