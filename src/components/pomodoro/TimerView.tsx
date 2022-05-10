@@ -1,23 +1,44 @@
 import React, { useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { setIsWorking, setTime } from '../../features/pomodoro/pomodoroSlice'
+import { nextPeriod } from '../../features/schedule/scheduleSlice'
 
-interface Props {
-  time: number,
-  setTime: React.Dispatch<React.SetStateAction<number>>
-}
 
-const TimerView = ({ time, setTime }: Props) => {
+const TimerView = () => {
+  const { schedule, period } = useAppSelector((state) => state.schedule)
+  const { time, isWorking } = useAppSelector((state) => state.pomodoro)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    // count down
-    let interval = setInterval(() => {
-      setTime(time - 1)
-    }, 1000)
+    // dummy interval
+    let interval = setInterval(()=>{}, 1000)
 
-    // stop timer when time is 0
-    if (time === 0) clearInterval(interval)
+    // count down only when isWorking is true.
+    if (isWorking) {
+      interval = setInterval(() => {
+        dispatch(setTime(time - 1))
+      }, 1000)
+    }
+
+    // stop counting when time is 0.
+    if (time === 0) {
+      clearInterval(interval)
+
+      if (isWorking) {
+        // check if current period is final one.
+        if (period < (schedule.length-1)){
+          // go to next period.
+          dispatch(setTime(schedule[period + 1]))
+          dispatch(nextPeriod())
+        }
+
+        // wait for user interaction.
+        dispatch(setIsWorking(false))
+      }
+    }
 
     return () => clearInterval(interval)
-  }, [time])
+  }, [time, isWorking])
 
   return (
     <>

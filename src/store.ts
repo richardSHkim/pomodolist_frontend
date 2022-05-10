@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import scheduleReducer from './features/schedule/scheduleSlice'
+import pomodoroReducer from './features/pomodoro/pomodoroSlice'
 
 export const store = configureStore({
   reducer: {
     schedule: scheduleReducer,
+    pomodoro: pomodoroReducer,
   },
 })
 

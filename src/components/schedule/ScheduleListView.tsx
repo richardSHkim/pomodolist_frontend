@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useAppSelector } from '../../hooks'
 import ScheduleItem from './ScheduleItem'
 
-interface Props {
-  scheduleArray: number[],
-  setScheduleArray: React.Dispatch<React.SetStateAction<number[]>>
-}
 
-const ScheduleListView = ({ scheduleArray, setScheduleArray }: Props) => {
-  const scheduleList: JSX.Element[] = scheduleArray.map((item, index) => {
+const ScheduleListView = () => {
+  const { schedule } = useAppSelector((state) => state.schedule)
+  const scheduleList: JSX.Element[] = schedule.map((item, index) => {
     return (
       <div key={index}>
         <ScheduleItem item={item}/>

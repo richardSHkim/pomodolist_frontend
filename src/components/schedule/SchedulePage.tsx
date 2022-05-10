@@ -2,18 +2,22 @@ import React, { useState } from 'react'
 import '../../styles/SchedulePage.css'
 import ScheduleInput from './ScheduleInput'
 import ScheduleListView from './ScheduleListView'
+import ScheduleButton from './ScheduleButton'
 
 const SchedulePage = () => {
-  const [scheduleArray, setScheduleArray] = useState<number[]>([])
 
   return (
     <>
       <div className='schedule-listview'>
-        <ScheduleListView scheduleArray={scheduleArray} setScheduleArray={setScheduleArray}/>
+        <ScheduleListView/>
       </div>
 
       <div className='schedule-input'>
-        <ScheduleInput scheduleArray={scheduleArray} setScheduleArray={setScheduleArray}/>
+        <ScheduleInput/>
+      </div>
+
+      <div className='schedule-button'>
+        <ScheduleButton/>
       </div>
     </>
   )

@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../store'
 
 // Define a type for the slice state
 interface ScheduleState {
-  schedule: number[]
+  schedule: number[],
+  period: number
 }
 
 // Define the initial state using that type
 const initialState: ScheduleState = {
   schedule: [],
+  period: 0
 }
 
 export const scheduleSlice = createSlice({
@@ -20,15 +21,23 @@ export const scheduleSlice = createSlice({
       state.schedule = []
     },
     addSchedule: (state, action: PayloadAction<number>) => {
-      state.schedule.push(action.payload)
+      if (action.payload > 0) state.schedule.push(action.payload)
     },
     deleteSchedule: (state, action: PayloadAction<number>) => {
       state.schedule.splice(action.payload, 1)
+    },
+
+    setPeriod: (state, action: PayloadAction<number>) => {
+      state.period = action.payload
+    },
+    nextPeriod: (state) => {
+      state.period += 1
     }
   }
 })
 
-// export const {  } = scheduleSlice.actions
+export const { clearSchedule, addSchedule, deleteSchedule,
+               setPeriod, nextPeriod } = scheduleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectSchedule = (state: RootState) => state.schedule.schedule

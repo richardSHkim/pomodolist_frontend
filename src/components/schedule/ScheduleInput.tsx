@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
+import { useAppDispatch } from '../../hooks'
+import { addSchedule } from '../../features/schedule/scheduleSlice'
 
-interface Props {
-  scheduleArray: number[],
-  setScheduleArray: React.Dispatch<React.SetStateAction<number[]>>
-}
 
-const ScheduleInput = ({ scheduleArray, setScheduleArray }: Props) => {
+const ScheduleInput = () => {
+  const dispatch = useAppDispatch()
   const [userTime, setUserTime] = useState<number>(0)
 
   return (
     <>
       <input type={'number'} step={5} min={0} value={userTime} onChange={(e) => setUserTime(parseInt(e.target.value))}></input>
       <button onClick={() => {
-        setScheduleArray([...scheduleArray, userTime])
+        dispatch(addSchedule(userTime))
         setUserTime(0)
         }}>Set</button>
     </>
