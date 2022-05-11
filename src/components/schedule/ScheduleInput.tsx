@@ -9,7 +9,7 @@ const ScheduleInput = () => {
   const [userTime, setUserTime] = useState<number>(0)
 
   const handleOnClick = (time: number) => {
-    dispatch(addSchedule(time))
+    dispatch(addSchedule(time*60))
     setUserTime(0)
   }
 

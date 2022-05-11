@@ -8,7 +8,7 @@ const ScheduleListView = () => {
   const scheduleList: JSX.Element[] = schedule.map((item, index) => {
     return (
       <div key={index} style={{padding: "5px"}}>
-        <ScheduleItem item={item} index={index}/>
+        <ScheduleItem item={item/60} index={index}/>
       </div>
     )
   })

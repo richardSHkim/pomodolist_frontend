@@ -14,7 +14,7 @@ const CircleView = () => {
     labels: ['elapsed time', 'remaining time'],
     datasets: [{
       label: 'timer',
-      data: [time, targetTime - time],
+      data: [time/60, (targetTime - time)/60],
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 99, 132, 0.2)',
