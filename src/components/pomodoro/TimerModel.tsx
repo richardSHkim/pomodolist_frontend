@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setIsWorking, setTime } from '../../features/pomodoro/pomodoroSlice'
-import { nextPeriod } from '../../features/schedule/scheduleSlice'
+import { setPeriod } from '../../features/schedule/scheduleSlice'
 
 
-const TimerView = () => {
+const TimerModel = () => {
   const { schedule, period } = useAppSelector((state) => state.schedule)
   const { time, isWorking } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
@@ -29,7 +29,11 @@ const TimerView = () => {
         if (period < (schedule.length-1)){
           // go to next period.
           dispatch(setTime(schedule[period + 1]))
-          dispatch(nextPeriod())
+          dispatch(setPeriod(period + 1))
+        }
+        else {
+          // end of schedule
+          dispatch(setPeriod(-1))
         }
 
         // wait for user interaction.
@@ -40,6 +44,13 @@ const TimerView = () => {
     return () => clearInterval(interval)
   }, [time, isWorking])
 
+  useEffect(() => {
+    if (schedule.length === 1) {
+      dispatch(setTime(schedule[0]))
+      dispatch(setPeriod(0))
+    }
+  }, [schedule])
+
   return (
     <>
       {Math.floor(time/60)}min {time%60}sec
@@ -47,4 +58,4 @@ const TimerView = () => {
   )
 }
 
-export default TimerView
+export default TimerModel

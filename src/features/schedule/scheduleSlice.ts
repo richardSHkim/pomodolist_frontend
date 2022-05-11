@@ -9,7 +9,7 @@ interface ScheduleState {
 // Define the initial state using that type
 const initialState: ScheduleState = {
   schedule: [],
-  period: 0
+  period: -1
 }
 
 export const scheduleSlice = createSlice({
@@ -30,14 +30,11 @@ export const scheduleSlice = createSlice({
     setPeriod: (state, action: PayloadAction<number>) => {
       state.period = action.payload
     },
-    nextPeriod: (state) => {
-      state.period += 1
-    }
   }
 })
 
 export const { clearSchedule, addSchedule, deleteSchedule,
-               setPeriod, nextPeriod } = scheduleSlice.actions
+               setPeriod } = scheduleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectSchedule = (state: RootState) => state.schedule.schedule

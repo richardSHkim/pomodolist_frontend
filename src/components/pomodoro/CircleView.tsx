@@ -1,33 +1,35 @@
-import React, { useEffect, useRef } from 'react'
-import '../../styles/CircleView.css'
+import React from 'react'
+import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setIsWorking } from '../../features/pomodoro/pomodoroSlice';
+ChartJS.register(ArcElement, Tooltip);
 
 const CircleView = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const { schedule, period } = useAppSelector((state) => state.schedule)
+  const { time, isWorking } = useAppSelector((state) => state.pomodoro)
+  const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) {
-      return
-    }
-
-    const context = canvas.getContext('2d')
-    if (!context) {
-      return
-    }
-
-    canvas.style.width = '100%'
-
-    context.beginPath();
-    context.arc(canvas.width/2, canvas.height/2, 50, 0, Math.PI);
-    context.fill();
-
-    context.beginPath();
-    context.arc(canvas.width/2, canvas.height/2, 50, 0, 2 * Math.PI);
-    context.stroke();
-  })
+  const data = {
+    labels: ['elapsed time', 'remaining time'],
+    datasets: [{
+      label: 'timer',
+      data: [schedule[period] - time, time],
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+      ],
+      borderColor: [
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 99, 132, 1)',
+      ],
+      borderWidth: 0,
+      animation: false,
+    }]
+  }
 
   return (
-    <canvas className='my-canvas' ref={canvasRef}></canvas>
+    <Pie data={data} onClick={() => dispatch(setIsWorking(true))}/>
   )
 }
 

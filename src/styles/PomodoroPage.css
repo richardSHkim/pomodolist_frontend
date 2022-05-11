@@ -1,15 +1,15 @@
 .circle-view {
   background-color: lightslategray;
-  height: 66.6vh;
+  flex: 3;
   padding: 10px;
-  justify-content: center;
-  align-items: center;
 }
 
 .timer-view {
   background-color: lightgreen;
+  flex: 1;
 }
 
 .timer-input {
   background-color: lightcyan;
+  flex: 1;
 }
