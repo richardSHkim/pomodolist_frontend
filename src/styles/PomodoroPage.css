@@ -1,15 +1,32 @@
 .circle-view {
   background-color: lightslategray;
-  flex: 3;
   padding: 10px;
+  flex: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.timer-view {
+.timer-model {
   background-color: lightgreen;
+  padding: 10px;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.timer-input {
-  background-color: lightcyan;
+.quick-input {
+  background-color: green;
+  padding: 10px;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-view {
+  background-color: goldenrod;
+  aspect-ratio: 1;
+  height: 100%;
 }
