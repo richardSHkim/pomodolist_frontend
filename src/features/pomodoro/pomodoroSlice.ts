@@ -5,7 +5,6 @@ interface PomodoroState {
   time: number,
   targetTime: number,
   isWorking: boolean,
-  alarm: HTMLAudioElement,
 }
 
 // Define the initial state using that type
@@ -13,7 +12,6 @@ const initialState: PomodoroState = {
   time: 0,
   targetTime: 0,
   isWorking: false,
-  alarm: new Audio('/sources/alarm.mp3')
 }
 
 export const pomodoroSlice = createSlice({

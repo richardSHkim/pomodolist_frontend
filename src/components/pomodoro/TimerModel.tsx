@@ -6,8 +6,10 @@ import { setPeriod } from '../../features/schedule/scheduleSlice'
 
 const TimerModel = () => {
   const { schedule, period, isRepeat } = useAppSelector((state) => state.schedule)
-  const { time, targetTime, isWorking, alarm } = useAppSelector((state) => state.pomodoro)
+  const { time, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
+
+  const [alarm, _] = useState<HTMLAudioElement>(new Audio('/sources/alarm.mp3'))
 
   useEffect(() => {
     // dummy interval
