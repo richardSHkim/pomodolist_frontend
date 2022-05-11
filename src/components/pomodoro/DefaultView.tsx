@@ -2,7 +2,9 @@ import React from 'react'
 
 const DefaultView = () => {
   return (
-    <div>DefaultView</div>
+    <h1>
+      Control your own destiny or someone else will
+    </h1>
   )
 }
 
