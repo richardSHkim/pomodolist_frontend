@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { useAppDispatch } from '../../hooks'
-import { addSchedule } from '../../features/schedule/scheduleSlice'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { addSchedule, setIsRepeat } from '../../features/schedule/scheduleSlice'
 
 
 const ScheduleInput = () => {
+  const { isRepeat } = useAppSelector((state) => state.schedule)
   const dispatch = useAppDispatch()
   const [userTime, setUserTime] = useState<number>(0)
 
@@ -28,12 +29,14 @@ const ScheduleInput = () => {
 
       <div>
         <button style={{margin: '10px'}} onClick={() => handleOnClick(10)}>
-            +10
+          +10
         </button>
 
         <button onClick={() => handleOnClick(50)}>
-            +50
+          +50
         </button>
+
+        <input type={'checkbox'} checked={isRepeat} onChange={() => dispatch(setIsRepeat(!isRepeat))}/>
       </div>
     </>
   )

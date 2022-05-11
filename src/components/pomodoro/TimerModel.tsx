@@ -5,7 +5,7 @@ import { setPeriod } from '../../features/schedule/scheduleSlice'
 
 
 const TimerModel = () => {
-  const { schedule, period } = useAppSelector((state) => state.schedule)
+  const { schedule, period, isRepeat } = useAppSelector((state) => state.schedule)
   const { time, targetTime, isWorking, alarm } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
@@ -23,9 +23,10 @@ const TimerModel = () => {
     // stop counting when time is 0.
     if (time === targetTime) {
       clearInterval(interval)
-      alarm.play()
 
       if (isWorking) {
+        alarm.play()
+
         // check if current period is final one.
         if ((period < (schedule.length-1)) && (period > -1)){
           // go to next period.
@@ -34,8 +35,18 @@ const TimerModel = () => {
           dispatch(setPeriod(period + 1))
         }
         else {
-          // end of schedule
-          dispatch(setPeriod(-1))
+          // check if isRepeat is true.
+          if (isRepeat) {
+            // go to the first period
+            dispatch(setTargetTime(schedule[0]))
+            dispatch(setTime(0))
+            dispatch(setPeriod(0))
+          }
+          else {
+            // end of schedule
+            dispatch(setPeriod(-1))
+          }
+
         }
 
         // wait for user interaction.
