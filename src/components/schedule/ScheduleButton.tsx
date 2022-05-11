@@ -13,7 +13,7 @@ const ScheduleButton = () => {
     if (schedule[period]) {
       dispatch(setIsWorking(true))
       dispatch(setTargetTime(schedule[0]))
-      dispatch(setPeriod(0))
+      dispatch(setTime(0))
     }
   }
 
