@@ -26,7 +26,7 @@ const TimerModel = () => {
 
       if (isWorking) {
         // check if current period is final one.
-        if (period < (schedule.length-1)){
+        if ((period < (schedule.length-1)) && (period > -1)){
           // go to next period.
           dispatch(setTime(schedule[period + 1]))
           dispatch(setPeriod(period + 1))
@@ -45,6 +45,7 @@ const TimerModel = () => {
   }, [time, isWorking])
 
   useEffect(() => {
+    console.log('hi')
     if (schedule.length === 1) {
       dispatch(setTime(schedule[0]))
       dispatch(setPeriod(0))
