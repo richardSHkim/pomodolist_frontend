@@ -1,4 +1,5 @@
 import React from 'react'
+import { setIsWorking, setTargetTime, setTime } from '../../features/pomodoro/pomodoroSlice'
 import { setPeriod } from '../../features/schedule/scheduleSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 
@@ -8,15 +9,21 @@ interface Props {
 }
 
 const ScheduleItem = ({ item, index }: Props) => {
-  const { period } = useAppSelector((state) => state.schedule)
+  const { schedule, period } = useAppSelector((state) => state.schedule)
   const dispatch = useAppDispatch()
 
   const handleOnClick = () => {
     if (period === index) {
+      dispatch(setTime(0))
+      dispatch(setTargetTime(0))
       dispatch(setPeriod(-1))
+      dispatch(setIsWorking(false))
     }
     else {
+      dispatch(setTime(0))
+      dispatch(setTargetTime(schedule[index]))
       dispatch(setPeriod(index))
+      dispatch(setIsWorking(false))
     }
   }
 

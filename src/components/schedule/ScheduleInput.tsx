@@ -7,32 +7,34 @@ const ScheduleInput = () => {
   const dispatch = useAppDispatch()
   const [userTime, setUserTime] = useState<number>(0)
 
+  const handleOnClick = (time: number) => {
+    dispatch(addSchedule(time))
+    setUserTime(0)
+  }
+
   return (
     <>
-      <div>
+      <div style={{margin: '5px'}}>
         <input type={'number'} step={5} min={0} value={userTime} onChange={(e) => setUserTime(parseInt(e.target.value))}></input>
         
         <button onClick={() => setUserTime(0)}>
           reset
         </button>
 
-        <button onClick={() => setUserTime(userTime + 10)}>
-          +10
-        </button>
-
-        <button onClick={() => setUserTime(userTime + 50)}>
-          +50
+        <button onClick={() => handleOnClick(userTime)}>
+          Set
         </button>
       </div>
 
-      <>
-        <button onClick={() => {
-          dispatch(addSchedule(userTime))
-          setUserTime(0)
-          }}>
-          Set
+      <div>
+        <button onClick={() => handleOnClick(10)}>
+            +10
         </button>
-      </>
+
+        <button onClick={() => handleOnClick(50)}>
+            +50
+        </button>
+      </div>
     </>
   )
 }
