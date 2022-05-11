@@ -27,7 +27,7 @@ const ScheduleInput = () => {
       </div>
 
       <div>
-        <button onClick={() => handleOnClick(10)}>
+        <button style={{margin: '10px'}} onClick={() => handleOnClick(10)}>
             +10
         </button>
 

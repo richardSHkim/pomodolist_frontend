@@ -8,9 +8,9 @@ const SchedulePage = () => {
 
   return (
     <>
-      <div className='schedule-button'>
+      {/* <div className='schedule-button'>
         <ScheduleButton/>
-      </div>
+      </div> */}
 
       <div className='schedule-input'>
         <ScheduleInput/>
