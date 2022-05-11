@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setPeriod } from '../../features/schedule/scheduleSlice'
-import { setIsWorking, setTime } from '../../features/pomodoro/pomodoroSlice'
+import { setIsWorking, setTargetTime, setTime } from '../../features/pomodoro/pomodoroSlice'
 
 
 const ScheduleButton = () => {
@@ -12,7 +12,7 @@ const ScheduleButton = () => {
   const handleClick = () => {
     if (schedule[period]) {
       dispatch(setIsWorking(true))
-      dispatch(setTime(schedule[0]))
+      dispatch(setTargetTime(schedule[0]))
       dispatch(setPeriod(0))
     }
   }

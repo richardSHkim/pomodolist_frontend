@@ -7,14 +7,14 @@ ChartJS.register(ArcElement, Tooltip);
 
 const CircleView = () => {
   const { schedule, period } = useAppSelector((state) => state.schedule)
-  const { time, isWorking } = useAppSelector((state) => state.pomodoro)
+  const { time, targetTime } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
   const data = {
     labels: ['elapsed time', 'remaining time'],
     datasets: [{
       label: 'timer',
-      data: [schedule[period] - time, time],
+      data: [time, targetTime - time],
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 99, 132, 0.2)',

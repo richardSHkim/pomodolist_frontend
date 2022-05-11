@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { setIsWorking, setTime } from '../../features/pomodoro/pomodoroSlice'
+import { setIsWorking, setTargetTime, setTime } from '../../features/pomodoro/pomodoroSlice'
 import { setPeriod } from '../../features/schedule/scheduleSlice'
 
 
 const TimerModel = () => {
   const { schedule, period } = useAppSelector((state) => state.schedule)
-  const { time, isWorking } = useAppSelector((state) => state.pomodoro)
+  const { time, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -16,19 +16,20 @@ const TimerModel = () => {
     // count down only when isWorking is true.
     if (isWorking) {
       interval = setInterval(() => {
-        dispatch(setTime(time - 1))
+        dispatch(setTime(time + 1))
       }, 1000)
     }
 
     // stop counting when time is 0.
-    if (time === 0) {
+    if (time === targetTime) {
       clearInterval(interval)
 
       if (isWorking) {
         // check if current period is final one.
         if ((period < (schedule.length-1)) && (period > -1)){
           // go to next period.
-          dispatch(setTime(schedule[period + 1]))
+          dispatch(setTargetTime(schedule[period + 1]))
+          dispatch(setTime(0))
           dispatch(setPeriod(period + 1))
         }
         else {
@@ -44,10 +45,10 @@ const TimerModel = () => {
     return () => clearInterval(interval)
   }, [time, isWorking])
 
+  // handle the first schedule
   useEffect(() => {
-    console.log('hi')
     if (schedule.length === 1) {
-      dispatch(setTime(schedule[0]))
+      dispatch(setTargetTime(schedule[0]))
       dispatch(setPeriod(0))
     }
   }, [schedule])
