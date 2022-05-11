@@ -12,7 +12,12 @@ const ScheduleItem = ({ item, index }: Props) => {
   const dispatch = useAppDispatch()
 
   const handleOnClick = () => {
-    dispatch(setPeriod(index))
+    if (period === index) {
+      dispatch(setPeriod(-1))
+    }
+    else {
+      dispatch(setPeriod(index))
+    }
   }
 
   if (index === period) {
