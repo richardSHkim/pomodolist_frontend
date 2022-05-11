@@ -20,7 +20,7 @@ const ScheduleButton = () => {
 
   return (
     <button onClick={handleClick}>
-        Start
+        Start Schedule
     </button>
   )
 }

@@ -7,7 +7,7 @@ const ScheduleListView = () => {
   const { schedule } = useAppSelector((state) => state.schedule)
   const scheduleList: JSX.Element[] = schedule.map((item, index) => {
     return (
-      <div key={index}>
+      <div key={index} style={{padding: "5px"}}>
         <ScheduleItem item={item} index={index}/>
       </div>
     )
