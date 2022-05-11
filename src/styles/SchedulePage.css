@@ -1,15 +1,15 @@
 .schedule-button {
-  background-color: yellow;
+  /* background-color: yellow; */
   padding: 10px;
 }
 
 .schedule-listview {
-  background-color: aqua;
+  /* background-color: aqua; */
   padding: 10px;
 }
 
 .schedule-input {
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   padding: 10px;
   flex-direction: column;

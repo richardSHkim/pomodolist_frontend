@@ -1,5 +1,5 @@
 .circle-view {
-  background-color: lightslategray;
+  /* background-color: lightslategray; */
   padding: 10px;
   flex: 8;
   display: flex;
@@ -8,7 +8,7 @@
 }
 
 .timer-model {
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   padding: 10px;
   flex: 1;
   display: flex;
@@ -17,7 +17,7 @@
 }
 
 .square-view {
-  background-color: goldenrod;
+  /* background-color: goldenrod; */
   aspect-ratio: 1;
   height: 100%;
   display: flex;
