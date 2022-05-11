@@ -6,7 +6,7 @@ import { setPeriod } from '../../features/schedule/scheduleSlice'
 
 const TimerModel = () => {
   const { schedule, period } = useAppSelector((state) => state.schedule)
-  const { time, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
+  const { time, targetTime, isWorking, alarm } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const TimerModel = () => {
     // stop counting when time is 0.
     if (time === targetTime) {
       clearInterval(interval)
+      alarm.play()
 
       if (isWorking) {
         // check if current period is final one.
