@@ -2,7 +2,7 @@ import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setIsWorking } from '../../features/pomodoro/pomodoroSlice';
+import { setIsWorking, setTime } from '../../features/pomodoro/pomodoroSlice';
 ChartJS.register(ArcElement, Tooltip);
 
 const CircleView = () => {
@@ -28,8 +28,12 @@ const CircleView = () => {
     }]
   }
 
+  const handleOnClick = () => {
+    dispatch(setIsWorking(true))
+  }
+
   return (
-    <Pie data={data} onClick={() => dispatch(setIsWorking(true))}/>
+    <Pie data={data} onClick={handleOnClick}/>
   )
 }
 
