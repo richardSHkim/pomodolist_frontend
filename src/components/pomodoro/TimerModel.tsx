@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { setIsWorking, setTargetTime, setTime } from '../../features/pomodoro/pomodoroSlice'
+import { setIsWorking, setTargetTime, setElapsedTime } from '../../features/pomodoro/pomodoroSlice'
 import { setPeriod } from '../../features/schedule/scheduleSlice'
 
 
 const TimerModel = () => {
   const { schedule, period, isRepeat } = useAppSelector((state) => state.schedule)
-  const { time, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
+  const { startTime, elapsedTime, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
   const [alarm, setAlarm] = useState<HTMLAudioElement | null>()
@@ -23,12 +23,12 @@ const TimerModel = () => {
     // count down only when isWorking is true.
     if (isWorking) {
       interval = setInterval(() => {
-        dispatch(setTime(time + 1))
+        dispatch(setElapsedTime(Math.floor((Date.now() - startTime)/1000)))
       }, 1000)
     }
 
     // stop counting when time reaches targetTime.
-    if (time === targetTime) {
+    if (elapsedTime === targetTime) {
       clearInterval(interval)
 
       if (isWorking) {
@@ -38,7 +38,7 @@ const TimerModel = () => {
         if ((period < (schedule.length-1)) && (period > -1)){
           // go to next period.
           dispatch(setTargetTime(schedule[period + 1]))
-          dispatch(setTime(0))
+          dispatch(setElapsedTime(0))
           dispatch(setPeriod(period + 1))
         }
         else {
@@ -46,7 +46,7 @@ const TimerModel = () => {
           if (isRepeat) {
             // go to the first period
             dispatch(setTargetTime(schedule[0]))
-            dispatch(setTime(0))
+            dispatch(setElapsedTime(0))
             dispatch(setPeriod(0))
           }
           else {
@@ -62,7 +62,7 @@ const TimerModel = () => {
     }
 
     return () => clearInterval(interval)
-  }, [time, isWorking])
+  }, [elapsedTime, isWorking])
 
   // handle the first schedule
   useEffect(() => {
@@ -74,7 +74,7 @@ const TimerModel = () => {
 
   return (
     <>
-      {Math.floor(time/60)}min {time%60}sec
+      {Math.floor(elapsedTime/60)}min {elapsedTime%60}sec
     </>
   )
 }

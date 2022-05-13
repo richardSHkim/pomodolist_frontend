@@ -2,14 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // Define a type for the slice state
 interface PomodoroState {
-  time: number,
+  startTime: number,
+  elapsedTime: number,
   targetTime: number,
   isWorking: boolean,
 }
 
 // Define the initial state using that type
 const initialState: PomodoroState = {
-  time: 0,
+  startTime: 0,
+  elapsedTime: 0,
   targetTime: 0,
   isWorking: false,
 }
@@ -19,8 +21,12 @@ export const pomodoroSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setTime: (state, action: PayloadAction<number>) => {
-      state.time = action.payload
+    setStartTime: (state, action: PayloadAction<number>) => {
+      state.startTime = action.payload
+    },
+
+    setElapsedTime: (state, action: PayloadAction<number>) => {
+      state.elapsedTime = action.payload
     },
 
     setTargetTime: (state, action: PayloadAction<number>) => {
@@ -33,7 +39,7 @@ export const pomodoroSlice = createSlice({
   }
 })
 
-export const { setTime, setTargetTime, setIsWorking } = pomodoroSlice.actions
+export const { setStartTime, setElapsedTime, setTargetTime, setIsWorking } = pomodoroSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectSchedule = (state: RootState) => state.schedule.schedule
