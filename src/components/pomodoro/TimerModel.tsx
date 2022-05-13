@@ -28,7 +28,7 @@ const TimerModel = () => {
     }
 
     // stop counting when time reaches targetTime.
-    if (elapsedTime === targetTime) {
+    if (elapsedTime >= targetTime) {
       clearInterval(interval)
 
       if (isWorking) {
