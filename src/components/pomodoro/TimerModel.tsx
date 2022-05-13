@@ -9,7 +9,12 @@ const TimerModel = () => {
   const { time, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
-  const [alarm, _] = useState<HTMLAudioElement>(new Audio('/sources/alarm.mp3'))
+  const [alarm, setAlarm] = useState<HTMLAudioElement | null>()
+
+  // set alarm
+  useEffect(() => {
+    setAlarm(new Audio('/sources/alarm.mp3'))
+  }, [])
 
   useEffect(() => {
     // dummy interval
@@ -22,12 +27,12 @@ const TimerModel = () => {
       }, 1000)
     }
 
-    // stop counting when time is 0.
+    // stop counting when time reaches targetTime.
     if (time === targetTime) {
       clearInterval(interval)
 
       if (isWorking) {
-        alarm.play()
+        if (alarm) alarm.play()
 
         // check if current period is final one.
         if ((period < (schedule.length-1)) && (period > -1)){
