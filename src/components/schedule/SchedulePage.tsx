@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import '../../styles/SchedulePage.css'
-import useScheduleAPI from '../api/useScheduleAPI'
+import useLoadSchedule from '../api/useLoadSchedule'
 import ScheduleInput from './ScheduleInput'
 import ScheduleListView from './ScheduleListView'
 
 const SchedulePage = () => {
-  useScheduleAPI()
-  
+  useLoadSchedule()
+
   return (
     <>
       <div className='schedule-input'>
