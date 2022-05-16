@@ -48,12 +48,12 @@ const ScheduleInput = () => {
       </div>
 
       <div>
-        <button style={{margin: '5px'}} onClick={handleClear}>
-          clear schedule
-        </button>
-
         <button style={{margin: '5px'}} onClick={loadFromDB}>
           load from DB
+        </button>
+
+        <button style={{margin: '5px'}} onClick={handleClear}>
+          clear schedule
         </button>
       </div>
     </>
