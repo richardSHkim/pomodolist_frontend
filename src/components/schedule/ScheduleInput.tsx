@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { addSchedule, setIsRepeat } from '../../features/schedule/scheduleSlice'
+import { addSchedule, clearSchedule, setIsRepeat, setPeriod } from '../../features/schedule/scheduleSlice'
+import useLoadSchedule from '../api/useLoadSchedule'
+import { setElapsedTime, setIsWorking, setTargetTime } from '../../features/pomodoro/pomodoroSlice'
 
 
 const ScheduleInput = () => {
@@ -13,30 +15,46 @@ const ScheduleInput = () => {
     setUserTime(0)
   }
 
+  const handleClear = () => {
+    dispatch(clearSchedule())
+    dispatch(setElapsedTime(0))
+    dispatch(setTargetTime(0))
+    dispatch(setPeriod(-1))
+    dispatch(setIsWorking(false))
+  }
+
+  const { loadFromDB } = useLoadSchedule()
+
   return (
     <>
-      <div style={{margin: '5px'}}>
+      <div>
         <input type={'number'} step={5} min={0} value={userTime} onChange={(e) => setUserTime(parseInt(e.target.value))}></input>
-        
-        <button onClick={() => setUserTime(0)}>
-          reset
-        </button>
 
-        <button onClick={() => handleOnClick(userTime)}>
+        <button style={{margin: '5px'}} onClick={() => handleOnClick(userTime)}>
           Set
         </button>
       </div>
 
       <div>
-        <button style={{margin: '10px'}} onClick={() => handleOnClick(10)}>
-          +10
-        </button>
-
-        <button onClick={() => handleOnClick(50)}>
+        <button style={{margin: '5px'}} onClick={() => handleOnClick(50)}>
           +50
         </button>
 
+        <button style={{margin: '5px'}} onClick={() => handleOnClick(10)}>
+          +10
+        </button>
+
         <input type={'checkbox'} checked={isRepeat} onChange={() => dispatch(setIsRepeat(!isRepeat))}/>
+      </div>
+
+      <div>
+        <button style={{margin: '5px'}} onClick={handleClear}>
+          clear schedule
+        </button>
+
+        <button style={{margin: '5px'}} onClick={loadFromDB}>
+          load from DB
+        </button>
       </div>
     </>
   )

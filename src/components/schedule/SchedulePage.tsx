@@ -5,8 +5,6 @@ import ScheduleInput from './ScheduleInput'
 import ScheduleListView from './ScheduleListView'
 
 const SchedulePage = () => {
-  useLoadSchedule()
-
   return (
     <>
       <div className='schedule-input'>
