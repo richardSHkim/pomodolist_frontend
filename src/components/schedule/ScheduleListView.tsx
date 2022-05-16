@@ -8,7 +8,7 @@ const ScheduleListView = () => {
 
   // load init schedule from db server
   useEffect(() => {
-    fetch('http://localhost:8000/api/schedule', {
+    fetch('/api/schedule', {
       method: 'GET',
       headers: {'content-type': 'application/json'},
     })
