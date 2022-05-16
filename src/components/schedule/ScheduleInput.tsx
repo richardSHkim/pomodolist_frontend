@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { addSchedule, clearSchedule, setIsRepeat, setPeriod } from '../../features/schedule/scheduleSlice'
-import useLoadSchedule from '../api/useLoadSchedule'
+import useScheduleAPI from '../api/useScheduleAPI'
 import { setElapsedTime, setIsWorking, setTargetTime } from '../../features/pomodoro/pomodoroSlice'
 
 
@@ -23,7 +23,8 @@ const ScheduleInput = () => {
     dispatch(setIsWorking(false))
   }
 
-  const { loadFromDB } = useLoadSchedule()
+  const { loadFromDB, deleteFromDB, saveToDB } = useScheduleAPI()
+
 
   return (
     <>
@@ -54,6 +55,14 @@ const ScheduleInput = () => {
 
         <button style={{margin: '5px'}} onClick={handleClear}>
           clear schedule
+        </button>
+
+        <button style={{margin: '5px'}} onClick={deleteFromDB}>
+          delete from DB
+        </button>
+
+        <button style={{margin: '5px'}} onClick={saveToDB}>
+          save to DB
         </button>
       </div>
     </>

@@ -4,14 +4,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface ScheduleState {
   schedule: number[],
   period: number,
-  isRepeat: boolean
+  isRepeat: boolean,
+  id: null | string,
 }
 
 // Define the initial state using that type
 const initialState: ScheduleState = {
   schedule: [],
   period: -1,
-  isRepeat: true
+  isRepeat: true,
+  id: null
 }
 
 export const scheduleSlice = createSlice({
@@ -36,12 +38,17 @@ export const scheduleSlice = createSlice({
     setIsRepeat: (state, action: PayloadAction<boolean>) => {
       state.isRepeat = action.payload
     },
+
+    setId: (state, action: PayloadAction<string>) => {
+      state.id = action.payload
+    }
   }
 })
 
 export const { clearSchedule, addSchedule, deleteSchedule,
                setPeriod,
-               setIsRepeat } = scheduleSlice.actions
+               setIsRepeat,
+               setId } = scheduleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectSchedule = (state: RootState) => state.schedule.schedule
