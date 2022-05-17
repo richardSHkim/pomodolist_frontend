@@ -23,7 +23,7 @@ const ScheduleInput = () => {
     dispatch(setIsWorking(false))
   }
 
-  const { loadFromDB, deleteFromDB, saveToDB } = useScheduleAPI()
+  const { loadFromDB, saveToDB } = useScheduleAPI()
 
 
   return (
@@ -53,16 +53,14 @@ const ScheduleInput = () => {
           load from DB
         </button>
 
-        <button style={{margin: '5px'}} onClick={handleClear}>
-          clear schedule
-        </button>
-
-        <button style={{margin: '5px'}} onClick={deleteFromDB}>
-          delete from DB
-        </button>
-
         <button style={{margin: '5px'}} onClick={saveToDB}>
           save to DB
+        </button>
+      </div>
+
+      <div>
+        <button style={{margin: '5px'}} onClick={handleClear}>
+          clear schedule
         </button>
       </div>
     </>
