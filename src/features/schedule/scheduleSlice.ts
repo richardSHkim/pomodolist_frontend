@@ -13,7 +13,7 @@ const initialState: ScheduleState = {
   schedule: [],
   period: -1,
   isRepeat: true,
-  id: null
+  id: '6283299b84274d7df57c6902'
 }
 
 export const scheduleSlice = createSlice({
