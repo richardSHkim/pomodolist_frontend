@@ -6,7 +6,7 @@ import { setIsWorking, setStartTime } from '../../features/pomodoro/pomodoroSlic
 ChartJS.register(ArcElement, Tooltip);
 
 const CircleView = () => {
-  const { elapsedTime, targetTime } = useAppSelector((state) => state.pomodoro)
+  const { elapsedTime, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
   const data = {
@@ -28,8 +28,10 @@ const CircleView = () => {
   }
 
   const handleOnClick = () => {
-    dispatch(setStartTime(Date.now()))
-    dispatch(setIsWorking(true))
+    if (!isWorking){
+      dispatch(setStartTime(Date.now()))
+      dispatch(setIsWorking(true))
+    }
   }
 
   return (
