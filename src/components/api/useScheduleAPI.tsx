@@ -7,13 +7,14 @@ const useScheduleAPI = () => {
   const { schedule, id } = useAppSelector((state) => state.schedule)
   const dispatch = useAppDispatch()
 
-  const loadFromDB = () => {
-    fetch('/api/schedule', {
+  const loadSchedule = async () => {
+    const res = await fetch('/api/schedule', {
       method: 'GET',
       headers: {'content-type': 'application/json'},
     })
-    .then(res => res.json())
-    .then(data => {
+
+    if (res.ok) {
+      const data = await res.json()
       if (data.length) {
         dispatch(setId(data[0]._id))
         dispatch(clearSchedule())
@@ -26,36 +27,53 @@ const useScheduleAPI = () => {
         dispatch(setTargetTime(data[0].schedule[0]*60))
       }
       else console.log('no schedule in DB')
-    })
-    .catch(err => console.log(err))
-  }
-
-  const deleteFromDB = () => {
-    if (id) {
-      fetch(`/api/schedule/${id}`, {
-        method: 'DELETE',
-        headers: {'content-type': 'application/json'},
-      })
-      .catch(err => console.log(err))
     }
-    else console.log('no id')
+    else console.log('can not load from server')
   }
 
-  const saveToDB = () => {
-    if (schedule.length) {
+  const saveSchedule = async () => {
+    const scheduleToSave = Array.from(schedule, x => x/60)
+
+    const res = await fetch('/api/schedule', {
+      method: 'PUSH',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({ schedule: scheduleToSave })
+    })
+
+    if (res.ok) console.log('schedule saved')
+    else console.log('can not save to server')
+  }
+
+  const updateSchedule = async (id: null | string) => {
+    if (id) {
       const scheduleToSave = Array.from(schedule, x => x/60)
-      fetch('/api/schedule', {
-        method: 'POST',
+
+      const res = await fetch(`/api/schedule/${id}`, {
+        method: 'PUT',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({ schedule: scheduleToSave })
       })
+  
+      if (res.ok) console.log('schedule updated')
+      else console.log('can not save to server')
     }
-
-    else console.log('no schedule exists')
-
+    else console.log('id is not available')
   }
 
-  return { loadFromDB, deleteFromDB, saveToDB }
+  const deleteSchedule = async (id: null | string) => {
+    if (id) {
+      const res = await fetch(`/api/schedule/${id}`, {
+        method: 'DELETE',
+        headers: {'content-type': 'application/json'},
+      })
+      
+      if (res.ok) console.log('schedule deleted')
+      else console.log('can not delete from server')
+    }
+    else console.log('id is not available')
+  }
+
+  return { loadSchedule, saveSchedule, updateSchedule, deleteSchedule }
 }
 
 export default useScheduleAPI

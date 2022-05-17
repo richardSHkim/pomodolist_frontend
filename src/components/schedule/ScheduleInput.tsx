@@ -6,7 +6,7 @@ import { setElapsedTime, setIsWorking, setTargetTime } from '../../features/pomo
 
 
 const ScheduleInput = () => {
-  const { isRepeat } = useAppSelector((state) => state.schedule)
+  const { isRepeat, id } = useAppSelector((state) => state.schedule)
   const dispatch = useAppDispatch()
   const [userTime, setUserTime] = useState<number>(0)
 
@@ -23,7 +23,7 @@ const ScheduleInput = () => {
     dispatch(setIsWorking(false))
   }
 
-  const { loadFromDB, saveToDB } = useScheduleAPI()
+  const { loadSchedule, updateSchedule } = useScheduleAPI()
 
 
   return (
@@ -49,12 +49,12 @@ const ScheduleInput = () => {
       </div>
 
       <div>
-        <button style={{margin: '5px'}} onClick={loadFromDB}>
-          load from DB
+        <button style={{margin: '5px'}} onClick={loadSchedule}>
+          load schedule
         </button>
 
-        <button style={{margin: '5px'}} onClick={saveToDB}>
-          save to DB
+        <button style={{margin: '5px'}} onClick={() => updateSchedule(id)}>
+          update schedule
         </button>
       </div>
 
