@@ -2,9 +2,12 @@ import React from 'react'
 
 const DefaultView = () => {
   return (
-    <h1 style={{textAlign: 'center', fontSize: '100px'}}>
-      KEEP <br/> CALM
-    </h1>
+    <span className='no-high'>
+      <p style={{textAlign: 'center', fontWeight: 'bold', fontSize: '100px'}}>
+        KEEP <br/> CALM
+      </p>
+    </span>
+
   )
 }
 

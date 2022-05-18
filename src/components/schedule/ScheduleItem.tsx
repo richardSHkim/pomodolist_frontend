@@ -29,14 +29,14 @@ const ScheduleItem = ({ item, index }: Props) => {
 
   if (index === period) {
     return (
-      <span onClick={handleOnClick}>
+      <span className='no-high' onClick={handleOnClick}>
         {item} *
       </span>
     )
   }
   else {
     return (
-      <span onClick={handleOnClick}>
+      <span className='no-high' onClick={handleOnClick}>
         {item}
       </span>
     )

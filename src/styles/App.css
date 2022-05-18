@@ -44,3 +44,14 @@
   padding: 10px;
   align-items: center;
 }
+
+.no-high {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.no-high::selection {
+  background: transparent;
+}

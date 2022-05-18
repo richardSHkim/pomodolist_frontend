@@ -73,9 +73,9 @@ const TimerModel = () => {
   }, [schedule])
 
   return (
-    <>
+    <div className='no-high'>
       {Math.floor(elapsedTime/60)}min {elapsedTime%60}sec
-    </>
+    </div>
   )
 }
 

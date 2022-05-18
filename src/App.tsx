@@ -7,13 +7,15 @@ import TodoListPage from './components/todolist/TodoListPage';
 function App() {
   return (
       <div className='page'>
-        <div className='nav-bar'>
-          <div style={{margin: '10px'}}>
-            <img src='/timer.png' style={{height: '30px'}}></img>
+        <div className='no-high'>
+          <div className='nav-bar'>
+            <div style={{margin: '10px'}}>
+              <img src='/timer.png' style={{height: '30px'}}></img>
+            </div>
+            <p style={{fontWeight:'bold'}}>
+              Podmodoro
+            </p>
           </div>
-          <p style={{fontWeight:'bold'}}>
-            Podmodoro
-          </p>
         </div>
 
         <div className="App">
