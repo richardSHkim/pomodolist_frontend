@@ -1,9 +1,10 @@
 import React from 'react'
+import TodoListInput from './TodoListInput'
 
 const TodoListPage = () => {
   return (
     <div style={{margin: '10px'}}>
-      Todo List
+      <TodoListInput/>
     </div>
   )
 }

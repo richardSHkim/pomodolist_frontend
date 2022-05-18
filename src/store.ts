@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import scheduleReducer from './features/schedule/scheduleSlice'
 import pomodoroReducer from './features/pomodoro/pomodoroSlice'
+import todolistReducer from './features/todolist/todolistSlice'
 
 export const store = configureStore({
   reducer: {
     schedule: scheduleReducer,
     pomodoro: pomodoroReducer,
+    todolist: todolistReducer,
   },
 })
 
