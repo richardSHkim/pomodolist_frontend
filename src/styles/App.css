@@ -6,7 +6,7 @@
 
 .nav-bar {
   background-color: white;
-  border-bottom: solid 2px rgb(239, 243, 244);
+  border-bottom: solid 2px #cdcdcd;
   display: flex;
   height: 30px;
   padding: 10px;
@@ -29,7 +29,7 @@
 
 .pomodoro-page {
   background-color: white;
-  flex: 3;
+  flex: 2;
   display: flex;
   flex-direction: column;
   padding: 10px;
