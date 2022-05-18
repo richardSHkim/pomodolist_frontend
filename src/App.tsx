@@ -6,19 +6,30 @@ import TodoListPage from './components/todolist/TodoListPage';
 
 function App() {
   return (
-    <div className="App">
-      <div className='schedule-page'>
-        <SchedulePage/>
-      </div>
+      <div className='page'>
+        <div className='nav-bar'>
+          <div style={{margin: '10px'}}>
+            <img src='/timer.png' style={{height: '30px'}}></img>
+          </div>
+          <p style={{fontWeight:'bold'}}>
+            Podmodoro
+          </p>
+        </div>
 
-      <div className='pomodoro-page'>
-        <PomodoroPage/>
-      </div>
+        <div className="App">
+          <div className='schedule-page'>
+            <SchedulePage/>
+          </div>
 
-      <div className='todolist-page'>
-        <TodoListPage/>
+          <div className='pomodoro-page'>
+            <PomodoroPage/>
+          </div>
+
+          <div className='todolist-page'>
+            <TodoListPage/>
+          </div>
+        </div>
       </div>
-    </div>
   );
 }
 

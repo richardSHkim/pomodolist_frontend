@@ -2,8 +2,8 @@ import React from 'react'
 
 const DefaultView = () => {
   return (
-    <h1>
-      Pomodoro
+    <h1 style={{textAlign: 'center', fontSize: '100px'}}>
+      KEEP <br/> CALM
     </h1>
   )
 }

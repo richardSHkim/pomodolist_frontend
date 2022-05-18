@@ -11,10 +11,16 @@ export const PomodoroPage = () => {
 
   return (
     <>
-      <div className='circle-view'>
-        <div className='square-view'>
-          {(period === -1) ? <DefaultView/> : <CircleView/>}
-        </div>
+      <div className='timer-view'>
+        {(period === -1) ? 
+          <div className='default-view'>
+            <DefaultView/>
+          </div>
+          :
+          <div className='circle-view'>
+          <CircleView/>
+          </div>
+        }
       </div>
 
       <div className='timer-model'>
