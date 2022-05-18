@@ -15,14 +15,14 @@ const CircleView = () => {
       label: 'timer',
       data: [elapsedTime/60, (targetTime - elapsedTime)/60],
       backgroundColor: [
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
+        'rgb(239, 243, 244)',
+        'rgb(255, 255, 255)'
       ],
       borderColor: [
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 99, 132, 1)',
+        'rgb(205, 205, 205)',
+        'rgb(205, 205, 205)',
       ],
-      borderWidth: 0,
+      borderWidth: 1,
       animation: false,
     }]
   }
