@@ -37,6 +37,14 @@ const ScheduleInput = () => {
       </div>
 
       <div>
+        <button style={{margin: '5px'}} onClick={() => handleOnClick(25)}>
+          +25
+        </button>
+
+        <button style={{margin: '5px'}} onClick={() => handleOnClick(5)}>
+          +5
+        </button>
+
         <button style={{margin: '5px'}} onClick={() => handleOnClick(50)}>
           +50
         </button>
@@ -44,24 +52,22 @@ const ScheduleInput = () => {
         <button style={{margin: '5px'}} onClick={() => handleOnClick(10)}>
           +10
         </button>
-
-        <input type={'checkbox'} checked={isRepeat} onChange={() => dispatch(setIsRepeat(!isRepeat))}/>
       </div>
 
       <div>
         <button style={{margin: '5px'}} onClick={loadSchedule}>
-          load schedule
+          load
         </button>
 
         <button style={{margin: '5px'}} onClick={() => updateSchedule(id)}>
-          update schedule
+          update
         </button>
-      </div>
-
-      <div>
-        <button style={{margin: '5px'}} onClick={handleClear}>
-          clear schedule
+        
+        <button style={{margin: '5px', marginRight: '10px'}} onClick={handleClear}>
+          clear
         </button>
+        <label className='no-high' htmlFor='repeat'>repeat</label>
+        <input type={'checkbox'} id='repeat' checked={isRepeat} onChange={() => dispatch(setIsRepeat(!isRepeat))}/>
       </div>
     </>
   )
