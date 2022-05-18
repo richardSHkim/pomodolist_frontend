@@ -4,7 +4,7 @@
 }
 
 .schedule-page {
-  background-color: rgb(223, 220, 220);
+  background-color: white;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 .pomodoro-page {
-  /* background-color: lightblue; */
+  background-color: white;
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
 }
 
 .todolist-page {
-  background-color: lightgoldenrodyellow;
+  background-color: white;
   flex: 1;
   display: flex;
   flex-direction: column;

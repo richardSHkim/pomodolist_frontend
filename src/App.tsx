@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './styles/App.css';
 import { PomodoroPage } from './components/pomodoro/PomodoroPage';
 import SchedulePage from './components/schedule/SchedulePage';
 import TodoListPage from './components/todolist/TodoListPage';
