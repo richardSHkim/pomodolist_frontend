@@ -1,14 +1,20 @@
 import React from 'react'
+import '../../styles/Navbar.css'
+import Logo from './Logo'
 
 const Navbar = () => {
   return (
     <>
-      <div style={{margin: '10px'}}>
-        <img className='no-high' src='/timer.png' style={{height: '30px'}}></img>
+      <div className='left-section'>
+        <Logo/>
       </div>
-      <p className='no-high' style={{fontWeight:'bold'}}>
-        Podmodoro
-      </p>
+
+      <div className='middle-section'>
+      </div>
+
+      <div className='right-section'>
+        <button>setting</button>
+      </div>
     </>
   )
 }

@@ -1,0 +1,11 @@
+.left-section {
+  display: flex;
+}
+
+.middle-section {
+  flex: 1;
+}
+
+.right-section {
+  display: flex;
+}
