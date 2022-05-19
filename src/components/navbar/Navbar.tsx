@@ -1,3 +1,5 @@
+import { IconButton } from '@mui/material'
+import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react'
 import '../../styles/Navbar.css'
 import Logo from './Logo'
@@ -13,7 +15,9 @@ const Navbar = () => {
       </div>
 
       <div className='right-section'>
-        <button>setting</button>
+        <IconButton aria-label="delete">
+          <SettingsIcon/>
+        </IconButton>
       </div>
     </>
   )
