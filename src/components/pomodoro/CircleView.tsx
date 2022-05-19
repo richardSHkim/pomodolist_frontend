@@ -15,7 +15,7 @@ const CircleView = () => {
       label: 'timer',
       data: [elapsedTime/60, (targetTime - elapsedTime)/60],
       backgroundColor: [
-        'rgb(239, 243, 244)',
+        'rgb(205, 205, 205)',
         'rgb(255, 255, 255)'
       ],
       borderColor: [
