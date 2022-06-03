@@ -6,7 +6,7 @@ import { setPeriod } from '../../features/schedule/scheduleSlice'
 
 const TimerModel = () => {
   const { schedule, period, isRepeat } = useAppSelector((state) => state.schedule)
-  const { startTime, elapsedTime, targetTime, isWorking } = useAppSelector((state) => state.pomodoro)
+  const { startTime, elapsedTime, targetTime, isWorking, useAlarm } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
   const [alarm, setAlarm] = useState<HTMLAudioElement | null>()
@@ -32,7 +32,7 @@ const TimerModel = () => {
       clearInterval(interval)
 
       if (isWorking) {
-        if (alarm) alarm.play()
+        if (alarm && useAlarm) alarm.play()
 
         // check if current period is final one.
         if ((period < (schedule.length-1)) && (period > -1)){
