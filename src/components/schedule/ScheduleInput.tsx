@@ -23,9 +23,6 @@ const ScheduleInput = () => {
     dispatch(setIsWorking(false))
   }
 
-  const { loadSchedule, updateSchedule } = useScheduleAPI()
-
-
   return (
     <>
       <div>
@@ -55,19 +52,9 @@ const ScheduleInput = () => {
       </div>
 
       <div>
-        <button style={{margin: '5px'}} onClick={loadSchedule}>
-          load
-        </button>
-
-        <button style={{margin: '5px'}} onClick={() => updateSchedule(id)}>
-          update
-        </button>
-        
         <button style={{margin: '5px', marginRight: '10px'}} onClick={handleClear}>
-          clear
+          clear schedule
         </button>
-        <label className='no-high' htmlFor='repeat'>repeat</label>
-        <input type={'checkbox'} id='repeat' checked={isRepeat} onChange={() => dispatch(setIsRepeat(!isRepeat))}/>
       </div>
     </>
   )
