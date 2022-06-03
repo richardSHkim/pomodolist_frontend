@@ -6,6 +6,7 @@ interface PomodoroState {
   elapsedTime: number,
   targetTime: number,
   isWorking: boolean,
+  useAlarm: boolean,
 }
 
 // Define the initial state using that type
@@ -14,6 +15,7 @@ const initialState: PomodoroState = {
   elapsedTime: 0,
   targetTime: 0,
   isWorking: false,
+  useAlarm: true,
 }
 
 export const pomodoroSlice = createSlice({
@@ -35,11 +37,15 @@ export const pomodoroSlice = createSlice({
 
     setIsWorking: (state, action: PayloadAction<boolean>) => {
       state.isWorking = action.payload
-    }
+    },
+
+    setUseAlarm:  (state, action: PayloadAction<boolean>) => {
+      state.useAlarm = action.payload
+    },
   }
 })
 
-export const { setStartTime, setElapsedTime, setTargetTime, setIsWorking } = pomodoroSlice.actions
+export const { setStartTime, setElapsedTime, setTargetTime, setIsWorking, setUseAlarm } = pomodoroSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectSchedule = (state: RootState) => state.schedule.schedule

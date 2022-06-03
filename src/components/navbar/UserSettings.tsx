@@ -8,9 +8,11 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setIsRepeat } from '../../features/schedule/scheduleSlice'
+import { setUseAlarm } from '../../features/pomodoro/pomodoroSlice'
 
 const UserSettings = () => {
   const { isRepeat } = useAppSelector((state) => state.schedule)
+  const { useAlarm } = useAppSelector((state) => state.pomodoro)
   const dispatch = useAppDispatch()
 
   const [open, setOpen] = useState(false)
@@ -24,8 +26,9 @@ const UserSettings = () => {
         <DialogTitle>
           Settings
         </DialogTitle>
-        <DialogContent>
+        <DialogContent style={{'display': 'flex', 'flexDirection': 'column'}}>
           <FormControlLabel control={<Checkbox checked={isRepeat} onClick={() => dispatch(setIsRepeat(!isRepeat))}/>} label="Repeat Schedule" />
+          <FormControlLabel control={<Checkbox checked={useAlarm} onClick={() => dispatch(setUseAlarm(!useAlarm))}/>} label="Use Alarm" />
         </DialogContent>
       </Dialog>
     </>
