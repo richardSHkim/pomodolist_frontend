@@ -7,7 +7,7 @@ const Logo = () => {
         <img className='no-high' src='/timer.png' style={{height: '30px'}}></img>
       </div>
       <p className='no-high' style={{fontWeight:'bold'}}>
-        Podmodoro
+        Pomodoro
       </p>
     </>
   )
