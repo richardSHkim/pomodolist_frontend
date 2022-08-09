@@ -1,8 +1,8 @@
 import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setIsWorking, setStartTime } from '../../features/pomodoro/pomodoroSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { setIsWorking, setStartTime } from '../../../features/pomodoro/pomodoroSlice';
 ChartJS.register(ArcElement, Tooltip);
 
 const CircleView = () => {
@@ -35,7 +35,12 @@ const CircleView = () => {
   }
 
   return (
-    <Pie data={data} onClick={handleOnClick}/>
+    <div className='timer-view'>
+      <div className='circle-view'>
+        <Pie data={data} onClick={handleOnClick}/>
+      </div>
+    </div>
+
   )
 }
 
