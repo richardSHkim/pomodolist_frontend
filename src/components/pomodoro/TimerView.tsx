@@ -1,20 +1,20 @@
 import React from 'react'
 import { useAppSelector } from '../../hooks'
 import CircleView from './timer_view_components/CircleView'
-import DefaultView from './timer_view_components/DefaultView'
+import CircleViewNotReady from './timer_view_components/CircleViewNotReady'
 
 const TimerView = () => {
   const { period } = useAppSelector((state) => state.schedule)
 
   return (
-      <div className='timer-view'>
+    <div className='timer-view'>
       {(period === -1) ? 
         <div className='default-view'>
-          <DefaultView/>
+          <CircleViewNotReady/>
         </div>
         :
         <div className='circle-view'>
-        <CircleView/>
+          <CircleView/>
         </div>
       }
     </div>

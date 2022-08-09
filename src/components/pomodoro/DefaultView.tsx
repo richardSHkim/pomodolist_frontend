@@ -6,13 +6,13 @@ const DefaultView = () => {
       <div className='default-view'>
         <span className='no-high'>
           <p style={{textAlign: 'center', margin: '0', fontWeight: 'bold', fontSize: '4vw'}}>
-            KEEP <br/> CALM
+            WELCOME
           </p>
           <p style={{textAlign: 'center', margin: '0', fontSize: '2vw'}}>
-            AND
+            TO
           </p>
           <p style={{textAlign: 'center', margin: '0', fontWeight: 'bold', fontSize: '4vw'}}>
-            USE <br/> POMODORO
+            POMODORO
           </p>
         </span>
       </div>

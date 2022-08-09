@@ -1,26 +1,10 @@
 import React, { useState } from 'react'
 import Carousel from "react-material-ui-carousel";
-import TimerView from './TimerView';
 
-const CarouselView = () => {
-  const [items, setItems] = useState([<TimerView/>])
-  const [index, setIndex] = useState(0)
 
+const CarouselView = (props: {'index': number, 'items': JSX.Element[]}) => {
   return (
-    <Carousel
-      index={index}
-      autoPlay={false}
-      navButtonsAlwaysVisible
-      animation='fade'
-      cycleNavigation
-      className='carousel-view'
-    >
-      {
-        items.map( (item, i) => {
-          return item
-        })
-      }
-    </Carousel>
+    props.items[props.index]
   )
 }
 
