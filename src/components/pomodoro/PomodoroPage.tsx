@@ -21,13 +21,13 @@ export const PomodoroPage = () => {
         animation='slide'
         cycleNavigation
         className='carousel-view'
-      >
-        {
-          items.map( (_, i) => {
-            return <CarouselView key={i} index={i} items={items}/>
-          })
-        }
-      </Carousel>
+        >
+          {
+            items.map( (_, i) => {
+              return <CarouselView key={i} index={i} items={items}/>
+            })
+          }
+        </Carousel>
       </div>
 
       <div className='timer-model'>

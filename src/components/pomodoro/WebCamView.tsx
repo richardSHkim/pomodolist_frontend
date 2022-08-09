@@ -20,66 +20,20 @@ const WebCamView = () => {
   }, [isWorking])
 
   return (
-    <>
-      <div>
-        {recordWebcam.status}
-      </div>
-      <div className='timer-view'>
-        {(() => {
-          switch (recordWebcam.status) {
-            case CAMERA_STATUS.CLOSED:
-              return <WebCamClosedView recordWebcam={recordWebcam} />
+    <div className='timer-view'>
+      {(() => {
+        switch (recordWebcam.status) {
+          case CAMERA_STATUS.CLOSED:
+            return <WebCamClosedView recordWebcam={recordWebcam} />
 
-            case CAMERA_STATUS.PREVIEW:
-              return <WebCamPreview recordWebcam={recordWebcam} />
+          case CAMERA_STATUS.PREVIEW:
+            return <WebCamPreview recordWebcam={recordWebcam} />
 
-            default:
-              return <WebCamOpenView recordWebcam={recordWebcam} />
-          }
-        })()}
-
-
-
-
-          {/* (recordWebcam.status === CAMERA_STATUS.CLOSED) ?
-            <WebCamClosedView recordWebcam={recordWebcam}/>
-            :
-            (recordWebcam.status === CAMERA_STATUS.PREVIEW) ?
-              <div className='default-view' onClick={analyzeVideo}>
-                <span className='no-high'>
-                  <p style={{textAlign: 'center', margin: '0', fontWeight: 'bold', fontSize: '4vw'}}>
-                    CLICK
-                  </p>
-                  <p style={{textAlign: 'center', margin: '0', fontSize: '2vw'}}>
-                    TO
-                  </p>
-                  <p style={{textAlign: 'center', margin: '0', fontWeight: 'bold', fontSize: '4vw'}}>
-                    ANALYZE
-                  </p>
-                </span>
-              </div>
-              :
-              <div className='default-view' style={{overflow: 'hidden'}} onClick={closeWebcam}>
-                <video
-                ref={recordWebcam.webcamRef}
-                style={{
-                  objectFit: 'cover',
-                  minWidth: '100%',
-                  minHeight: '100%',
-                  display: `${
-                    recordWebcam.status === CAMERA_STATUS.OPEN ||
-                    recordWebcam.status === CAMERA_STATUS.RECORDING
-                      ? "block"
-                      : "none"
-                  }`
-                }}
-                autoPlay
-                muted
-                />
-              </div>
-        } */}
-      </div>
-    </>
+          default:
+            return <WebCamOpenView recordWebcam={recordWebcam} />
+        }
+      })()}
+    </div>
   )
 }
 

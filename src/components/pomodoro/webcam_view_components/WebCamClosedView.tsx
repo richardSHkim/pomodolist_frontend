@@ -11,10 +11,10 @@ const WebCamClosedView = (props: propsType) => {
 
   return (
     (isWorking) ?
-        <div className='default-view'>
+      <div className='default-view'>
         <span className='no-high'>
           <p style={{textAlign: 'center', margin: '0', fontSize: '2vw'}}>
-            CAN NOT OPEN CAMERA WHILE POMODORO is RUNNING
+            CAN NOT OPEN CAMERA <br/> while <br/> POMODORO is RUNNING
           </p>
         </span>
       </div>  
