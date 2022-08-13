@@ -21,9 +21,9 @@ const WebCamView = () => {
   }, [isWorking])
 
   // for Debug
-  useEffect(() => {
-    console.log(recordWebcam.status, recordWebcamView.status)
-  }, [elapsedTime, recordWebcam.status, recordWebcamView.status])
+  // useEffect(() => {
+  //   console.log(recordWebcam.status, recordWebcamView.status)
+  // }, [elapsedTime, recordWebcam.status, recordWebcamView.status])
 
 
   return (
