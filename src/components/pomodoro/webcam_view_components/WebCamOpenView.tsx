@@ -27,11 +27,11 @@ const WebCamOpenView = (props: propsType) => {
       const results = await sendReview(blob)
     }
 
-    if (isWorking) {
+    if (isWorking && props.recordWebcam.status) {
       if (props.recordWebcam.status === CAMERA_STATUS.OPEN) {
         props.recordWebcam.start()
       }
-      if (elapsedTime && elapsedTime % 10 == 0) {
+      if (elapsedTime && elapsedTime % 5 == 0) {
         reviewVideo()
       }
     }

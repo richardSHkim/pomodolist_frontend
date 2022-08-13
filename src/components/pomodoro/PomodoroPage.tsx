@@ -7,9 +7,10 @@ import TimerView from './TimerView';
 import DefaultView from './DefaultView';
 import WebCamView from './WebCamView';
 import TimerModel from './TimerModel'
+import ReviewResultView from './ReviewResultView';
 
 export const PomodoroPage = () => {
-  const [items, _] = useState([<DefaultView/>, <TimerView/>, <WebCamView/>])
+  const [items, _] = useState([<TimerView/>, <WebCamView/>, <ReviewResultView/>])
 
   return (
     <>
