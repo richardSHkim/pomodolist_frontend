@@ -4,10 +4,16 @@ import { useAppSelector } from '../../../hooks'
 
 interface propsType {
   'recordWebcam': RecordWebcamHook,
+  'recordWebcamView': RecordWebcamHook,
 }
 
 const WebCamClosedView = (props: propsType) => {
   const { isWorking } = useAppSelector((state) => state.pomodoro)
+
+  const openCamera = () => {
+    props.recordWebcam.open()
+    props.recordWebcamView.open()
+  }
 
   return (
     (isWorking) ?
@@ -19,7 +25,7 @@ const WebCamClosedView = (props: propsType) => {
         </span>
       </div>  
       :
-      <div className='default-view' onClick={props.recordWebcam.open}>
+      <div className='default-view' onClick={openCamera}>
         <span className='no-high'>
           <p style={{textAlign: 'center', margin: '0', fontWeight: 'bold', fontSize: '4vw'}}>
             CLICK
