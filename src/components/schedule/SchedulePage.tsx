@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../styles/SchedulePage.css'
 import ScheduleInput from './ScheduleInput'
 import ScheduleListView from './ScheduleListView'

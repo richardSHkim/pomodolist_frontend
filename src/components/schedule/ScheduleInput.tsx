@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks'
-import { addSchedule, clearSchedule, setIsRepeat, setPeriod } from '../../features/schedule/scheduleSlice'
+import React, { useState } from 'react'
+import { useAppDispatch } from '../../hooks'
+import { addSchedule, clearSchedule, setPeriod } from '../../features/schedule/scheduleSlice'
 import useScheduleAPI from '../api/useScheduleAPI'
 import { setElapsedTime, setIsWorking, setTargetTime } from '../../features/pomodoro/pomodoroSlice'
 
 
 const ScheduleInput = () => {
-  const { isRepeat, id } = useAppSelector((state) => state.schedule)
   const dispatch = useAppDispatch()
+  const { addScheduleAPI, clearScheduleAPI } = useScheduleAPI()
+
   const [userTime, setUserTime] = useState<number>(0)
 
   const handleOnClick = (time: number) => {
+    addScheduleAPI(time)
     dispatch(addSchedule(time*60))
     setUserTime(0)
   }
@@ -21,6 +23,7 @@ const ScheduleInput = () => {
     dispatch(setTargetTime(0))
     dispatch(setPeriod(-1))
     dispatch(setIsWorking(false))
+    clearScheduleAPI()
   }
 
   return (

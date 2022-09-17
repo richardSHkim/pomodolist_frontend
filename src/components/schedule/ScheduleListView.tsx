@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector } from '../../hooks'
+import useScheduleAPI from '../api/useScheduleAPI'
 import ScheduleItem from './ScheduleItem'
-
 
 const ScheduleListView = () => {
   const { schedule } = useAppSelector((state) => state.schedule)
+  const { loadScheduleAPI } = useScheduleAPI()
 
+  useEffect(() => {
+    loadScheduleAPI()
+  }, [])
 
   const scheduleList: JSX.Element[] = schedule.map((item, index) => {
     return (
