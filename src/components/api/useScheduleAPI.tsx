@@ -20,6 +20,7 @@ const useScheduleAPI = () => {
         dispatch(setPeriod(0))
         dispatch(setTargetTime(schedule_data[0]))
       }
+      console.log('schedule loaded')
     }
     else console.log('load schedule failed')
   }
@@ -31,7 +32,7 @@ const useScheduleAPI = () => {
       body: JSON.stringify({ "time": time })
     })
 
-    if (res.ok) console.log('schedule saved')
+    if (res.ok) console.log('schedule added')
     else console.log('add schedule failed')
   }
 
