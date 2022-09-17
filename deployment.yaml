@@ -13,6 +13,26 @@ spec:
     spec:
       serviceAccountName: sql-demo-ksa
       containers:
+      - name: pomodoro-fe
+        image: uscentral-1docker.pkg.dev/sql-demo-project-362810/pomodoro-frontend-app:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: sql-demo-secret
+              key: username
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: sql-demo-secret
+              key: password
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: sql-demo-secret
+              key: database
       - name: cloud-sql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.32.0
         command:
