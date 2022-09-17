@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: pomodolist-frontend-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: pomodolist-frontend-app
   ports:
-  - port: 80
+  - protocol: TCP
+    port: 80
     targetPort: 80
