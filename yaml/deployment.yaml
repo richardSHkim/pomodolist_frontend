@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pomodolist-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pomodolist-frontend-app
+  template:
+    metadata:
+      labels:
+        app: pomodolist-frontend-app
+    spec:
+      containers:
+      - name: pomodolist-fe
+        image: us-central1-docker.pkg.dev/pomodolist-362812/pomodolist/pomodolist-frontend-image:tag1
+        ports:
+        - containerPort: 80
