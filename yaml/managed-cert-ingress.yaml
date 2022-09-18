@@ -6,6 +6,7 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: pomodolist-ip
     networking.gke.io/managed-certificates: managed-cert
     kubernetes.io/ingress.class: "gce"
+    networking.gke.io/v1beta1.FrontendConfig: pomodolist-frontend-config
 spec:
   defaultBackend:
     service:
