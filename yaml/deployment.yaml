@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: pomodolist-fe
-        image: us-central1-docker.pkg.dev/pomodolist-362812/pomodolist/pomodolist-frontend-image:1.0.1
+        image: us-central1-docker.pkg.dev/pomodolist-362812/pomodolist/pomodolist-frontend-image:1.1.0
         ports:
         - containerPort: 80
