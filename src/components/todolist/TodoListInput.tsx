@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
-import { addTodoList } from '../../features/todolist/todolistSlice'
-import { useAppDispatch } from '../../hooks'
+import useTodoListAPI from '../api/useTodoListAPI'
 
 const TodoListInput = () => {
-  const dispatch = useAppDispatch()
+  const { addTodoListAPI } = useTodoListAPI()
 
   const [todo, setTodo] = useState<string>('')
 
   const handleClick = () => {
-    dispatch(addTodoList(todo))
+    addTodoListAPI(todo)
     setTodo('')
   }
 
   return (
     <>
-      <input type={'text'} style={{margin: '5px'}}
-        value={todo} onChange={(e) => setTodo(e.target.value)}></input>
+      <input type={'text'} style={{margin: '5px'}} value={todo} onChange={(e) => setTodo(e.target.value)} />  
       <button onClick={handleClick}>Add</button>
     </>
   )

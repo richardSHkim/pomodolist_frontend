@@ -1,8 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+export interface TodoType {
+  id: number,
+  todo: string,
+  done: boolean
+}
+
 // Define a type for the slice state
 interface TodoListState {
-  todoList: string[],
+  todoList: TodoType[],
 }
 
 // Define the initial state using that type
@@ -15,19 +21,13 @@ export const todolistSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    clearTodoList: (state) => {
-      state.todoList = []
-    },
-    addTodoList: (state, action: PayloadAction<string>) => {
-      if (action.payload) state.todoList.push(action.payload)
-    },
-    deleteTodoList: (state, action: PayloadAction<number>) => {
-      state.todoList.splice(action.payload, 1)
+    setTodoList: (state, action: PayloadAction<TodoType[]>) => {
+      state.todoList = action.payload
     },
   }
 })
 
-export const { clearTodoList, addTodoList, deleteTodoList } = todolistSlice.actions
+export const { setTodoList } = todolistSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectSchedule = (state: RootState) => state.schedule.schedule

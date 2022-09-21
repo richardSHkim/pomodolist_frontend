@@ -1,31 +1,33 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material'
-import { deleteTodoList } from '../../features/todolist/todolistSlice';
-import { useAppDispatch } from '../../hooks';
+import { TodoType } from '../../features/todolist/todolistSlice';
+import useTodoListAPI from '../api/useTodoListAPI';
 
-interface Props {
-  todo: string,
+export interface Props {
+  todo: TodoType,
   index: number
 }
 
-const TodoItem = ({ todo, index }: Props) => {
-  const dispatch = useAppDispatch()
+export const TodoItem = ({ todo, index }: Props) => {
+  const { updateTodoListAPI, deleteTodoAPI } = useTodoListAPI()
 
-  const [done, setDone] = useState(false)
+  const onDoneClick = () => {
+    updateTodoListAPI(todo.id, todo.todo, !todo.done)
+  }
 
   const onDeleteClick = () => {
-    dispatch(deleteTodoList(index))
+    deleteTodoAPI(todo.id)
   }
 
   return (
     <>
       <div className='no-high'>
         <span style={{'margin': '10px'}}>
-          {(done) ? <del>{todo}</del> : todo}
+          {(todo.done) ? <del>{todo.todo}</del> : todo.todo}
         </span>
-        <IconButton aria-label="delete" onClick={() => setDone(!done)}>
+        <IconButton aria-label="delete" onClick={onDoneClick}>
           <DoneIcon/>
         </IconButton>
         <IconButton aria-label="delete" onClick={onDeleteClick}>
@@ -35,5 +37,3 @@ const TodoItem = ({ todo, index }: Props) => {
     </>
   )
 }
-
-export default TodoItem

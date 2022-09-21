@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector } from '../../hooks'
-import TodoItem from './TodoItem'
+import useTodoListAPI from '../api/useTodoListAPI'
+import { TodoItem } from './TodoItem'
 
 const TodoListView = () => {
+  const { loadTodoListAPI } = useTodoListAPI()
+
+  useEffect(() => {
+    loadTodoListAPI()
+  }, []) 
+
   const { todoList } = useAppSelector((state) => state.todolist)
 
   const todoListView: JSX.Element[] = todoList.map((todo, index) => {
