@@ -11,3 +11,7 @@ Pomodolist는 pomodoro + todo list의 합성어입니다.
 3. 다시 왼쪽으로 화면을 넘긴 후, 클릭하여 pomodoro 타이머 시작
 4. 20초 정도 기다리면, 3번째 화면에서 사용자의 상태를 pie chart로 보여줍니다.
 
+## Others
+[pomodolist_backend](https://github.com/richardSHkim/pomodolist_backend)
+
+[pomodolist_ml_backend](https://github.com/richardSHkim/pomodolist_ml_backend)
